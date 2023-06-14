@@ -7,7 +7,8 @@ import { MDXRemote } from "next-mdx-remote";
 
 const url = `${process.env.ENDPOINT}`;
 
-//instantiating a graphqlclient...
+
+  //instantiating a graphqlclient...
 const graphConnect = new GraphQLClient(url);
 
 const query = gql`
@@ -29,6 +30,7 @@ const query = gql`
 `;
 
 export async function getStaticPaths() {
+
   // querying for slugs from hygraph...
   const { blogposts } = await graphConnect.request(gql`
     query {

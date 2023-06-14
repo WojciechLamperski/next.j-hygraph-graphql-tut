@@ -1,22 +1,22 @@
 import Style from "../styles/Nav.module.css";
 import Link from "next/link";
 
+
+
 const menu_itemList = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
 ];
 
-function Nav({ navActive, setNavActive }) {
+function Nav({navActive,setNavActive}) {
+ 
+
   return (
     <div className={Style.navBar}>
-      <Link
-        href={"/"}
-        onClick={() => {
-          setNavActive(false);
-        }}
-      >
-        <h1>NextBlog</h1>
-      </Link>
+      
+      <Link href={"/"} onClick={()=>{
+          setNavActive(false)
+           }}><h1>NextBlog</h1></Link>
       <div
         className={Style.mobiNav}
         onClick={() => {
@@ -36,21 +36,22 @@ function Nav({ navActive, setNavActive }) {
               <div
                 key={menu.name}
                 onClick={() => {
-                  setNavActive(false);
+                  setNavActive(false); 
                 }}
               >
-                <Nav_menu {...menu} />
+                <Nav_menu  {...menu} />
               </div>
             );
           })}
         </ul>
       </div>
     </div>
+    
   );
 }
 export function Nav_menu({ name, href }) {
   return (
-    <Link href={href}>
+    <Link href={href} >
       <li>{name}</li>
     </Link>
   );

@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const url = `${process.env.ENDPOINT}`;
 
-// instantiating a graphql client...
+  // instantiating a graphql client...
 const graphConnect = new GraphQLClient(url);
 
 const query = gql`
@@ -27,6 +27,7 @@ const query = gql`
 `;
 
 export async function getServerSideProps() {
+
   // making request to hygraph for posts
   const { blogposts } = await graphConnect.request(query);
 
@@ -40,10 +41,10 @@ function Homepage({ blogposts }) {
         <title>Blog Tutorial</title>
       </Head>
       <main className={Style.postcontainer}>
-        {/* using array.map() method to iterate each post returned from hygraph */}
+  {/* using array.map() method to iterate each post returned from hygraph */}
         {blogposts.map((blogposts) => {
           return (
-            <div key={blogposts.id}>
+            <div  key={blogposts.id}>
               <div className={Style.inside}>
                 <div className={Style.img}>
                   <Image
@@ -67,6 +68,8 @@ function Homepage({ blogposts }) {
           );
         })}
       </main>
+
+   
     </>
   );
 }
